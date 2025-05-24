@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice';
@@ -9,7 +11,12 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
- 
+    var result = cart.map(s => parseFloat(s.cost.substring(1)) * s.quantity).reduce((a,b) => a + b,0)
+    return result
+    
+    // var total = cart.forEach(s => s.CartItem.cost * s.CartItem.quantity)
+    // return total
+    // parseFloat(s.CartItem.cost.substring(1))
   };
 
   const handleContinueShopping = (e) => {
